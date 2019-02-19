@@ -45,6 +45,15 @@ joi@^13.1.2:
     isemail "3.x.x"
     topo "3.x.x"
 
+kdbxweb@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/kdbxweb/-/kdbxweb-1.2.6.tgz#6051cb6d2811d0e3fd5a29185cae95f5ef3e81ff"
+  integrity sha512-9KJlanItY6D2CmR/TN27HINwugSPNATD9yWq4V56JAxVUTY8WHveC5H0llLiyxgPHfr7eejPk8hmj98l/lq7Cw==
+  dependencies:
+    pako "github:keeweb/pako#653c0b00d8941c89d09ed4546d2179001ec44efc"
+    text-encoding "github:keeweb/text-encoding#4dfb7cb0954c222852092f8b06ae4f6b4f60bfbb"
+    xmldom "github:keeweb/xmldom#ec8f61f723e2f403adaf7a1bbf55ced4ff1ea0c6"
+
 nan@^2.10.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.12.1.tgz#7b1aa193e9aa86057e3c7bbd0ac448e770925552"
@@ -58,10 +67,18 @@ node-expat@^2.3.15:
     bindings "^1.2.1"
     nan "^2.10.0"
 
+"pako@github:keeweb/pako#653c0b00d8941c89d09ed4546d2179001ec44efc":
+  version "1.0.3"
+  resolved "https://codeload.github.com/keeweb/pako/tar.gz/653c0b00d8941c89d09ed4546d2179001ec44efc"
+
 punycode@2.x.x:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
+
+"text-encoding@github:keeweb/text-encoding#4dfb7cb0954c222852092f8b06ae4f6b4f60bfbb":
+  version "0.6.0"
+  resolved "https://codeload.github.com/keeweb/text-encoding/tar.gz/4dfb7cb0954c222852092f8b06ae4f6b4f60bfbb"
 
 topo@3.x.x:
   version "3.0.3"
@@ -78,3 +95,7 @@ xml2json@^0.11.2:
     hoek "^4.2.1"
     joi "^13.1.2"
     node-expat "^2.3.15"
+
+"xmldom@github:keeweb/xmldom#ec8f61f723e2f403adaf7a1bbf55ced4ff1ea0c6":
+  version "0.1.21"
+  resolved "https://codeload.github.com/keeweb/xmldom/tar.gz/ec8f61f723e2f403adaf7a1bbf55ced4ff1ea0c6"
