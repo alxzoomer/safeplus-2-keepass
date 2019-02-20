@@ -26,9 +26,9 @@ function getName(name) {
 function fill(entry, fields) {
   fields.forEach((field) => {
     if (field.hidden) {
-      entry.fields[getName(field.title)] = kdbxweb.ProtectedValue.fromString(field._vv_);
+      entry.fields[getName(field.title)] = kdbxweb.ProtectedValue.fromString(field.$t);
     } else {
-      entry.fields[getName(field.title)] = field._vv_;
+      entry.fields[getName(field.title)] = field.$t;
     }
   });
 }
@@ -56,9 +56,10 @@ function exportToKeepass(json) {
       group.card.forEach((card) => {
         createEntry(db, gr, card);
       });
+    } else if (group.card) {
+      createEntry(db, gr, group.card);
     } else {
       log(`Skip group ${group.title}`);
-      // createEntry(db, gr, group.card);
     }
   });
 
@@ -72,7 +73,7 @@ function main() {
   if (xmlFilePath) {
     if (fs.existsSync(xmlFilePath)) {
       const xml = fs.readFileSync(xmlFilePath);
-      const json = parser.toJson(xml, { object: true, alternateTextNode: '_vv_' });
+      const json = parser.toJson(xml, { object: true });
       exportToKeepass(json.safeboxplus.folder);
     } else {
       log(`File ${xmlFilePath} doesn't exists`);
