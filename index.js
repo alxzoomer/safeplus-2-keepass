@@ -7,6 +7,42 @@ const { log } = console;
 
 require('dotenv').config();
 
+const m = {
+  Пароль: 'Password',
+  'Имя пользователя': 'UserName',
+  Ссылка: 'URL',
+  Заметка: 'Notes',
+  Примечания: 'Notes',
+};
+
+function getName(name) {
+  const newName = m[name];
+  if (newName) {
+    return newName;
+  }
+  return name;
+}
+
+function fill(entry, fields) {
+  fields.forEach((field) => {
+    if (field.hidden) {
+      entry.fields[getName(field.title)] = kdbxweb.ProtectedValue.fromString(field._vv_);
+    } else {
+      entry.fields[getName(field.title)] = field._vv_;
+    }
+  });
+}
+
+function createEntry(db, group, card) {
+  const entry = db.createEntry(group);
+  try {
+    entry.fields.Title = card.title;
+    fill(entry, card.field);
+  } catch (error) {
+    log(error);
+  }
+}
+
 function exportToKeepass(json) {
   const credentials = new kdbxweb.Credentials(kdbxweb.ProtectedValue.fromString('password123'));
   const db = kdbxweb.Kdbx.create(credentials, 'Passwords Database');
@@ -18,10 +54,11 @@ function exportToKeepass(json) {
     // log(group.card);
     if (group.card instanceof Array) {
       group.card.forEach((card) => {
-        // log(JSON.stringify(card, undefined, 2));
+        createEntry(db, gr, card);
       });
     } else {
-      // log(JSON.stringify(group.card, undefined, 2));
+      log(`Skip group ${group.title}`);
+      // createEntry(db, gr, group.card);
     }
   });
 
