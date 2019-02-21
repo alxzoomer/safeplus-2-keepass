@@ -44,7 +44,7 @@ function createEntry(db, group, card) {
 }
 
 function exportToKeepass(json) {
-  const credentials = new kdbxweb.Credentials(kdbxweb.ProtectedValue.fromString('password123'));
+  const credentials = new kdbxweb.Credentials(kdbxweb.ProtectedValue.fromString(process.env.KDBX_PASSWORD));
   const db = kdbxweb.Kdbx.create(credentials, 'Passwords Database');
   const defaultGroup = db.getDefaultGroup();
   json.forEach((group) => {
