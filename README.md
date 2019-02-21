@@ -79,8 +79,6 @@ npm run r
 
 That's it!!!
 
-### Execution
-
 ## Links
 
 * [Web Kdbx library](https://github.com/keeweb/kdbxweb)
