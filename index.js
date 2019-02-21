@@ -76,7 +76,7 @@ function main() {
       const json = parser.toJson(xml, { object: true });
       exportToKeepass(json.safeboxplus.folder);
     } else {
-      log(`File ${xmlFilePath} doesn't exists`);
+      log(`File ${xmlFilePath} doesn't exist`);
     }
   } else {
     log('Please specify existing file path');
